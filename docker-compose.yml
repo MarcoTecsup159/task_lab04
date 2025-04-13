@@ -6,8 +6,11 @@ services:
     container_name: postgres-sql
     environment:
       POSTGRES_PASSWORD: example
+      POSTGRES_DB: postgres
     ports:
       - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   task:
     build: .
